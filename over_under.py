@@ -3,11 +3,10 @@ import random
 in_game = True
 cash = 150
 valid_bet_types = ["OVER", "UNDER", "EXACT"]
-debug = False
 
 while in_game:
-    die_one = random.randrange(1, 7)
-    die_two = random.randrange(1, 7)
+    die_one = random.randint(1, 6)
+    die_two = random.randint(1, 6)
     roll = die_one + die_two
 
     valid_input = False
@@ -18,7 +17,7 @@ while in_game:
         else:
             print("That is an invalid bet type.")
 
-    bet_amount = float(input(f"How much would you like to bet? You have ${cash}. "))
+    bet_amount = int(input(f"How much would you like to bet? You have ${cash}. "))
     cash -= bet_amount
 
     print(f"The roll was {roll}.")
@@ -37,12 +36,7 @@ while in_game:
 
     print(f"You have ${cash} remaining. ")
 
-    if debug:
-        print(f"    DEBUG: bet_amount was {bet_amount}.")
-        print(f"    DEBUG: bet_type was {bet_type}.")
-        print(f"    DEBUG: roll was {roll}.")
-
     play_again = input("Would you like to play again? (Y/N) ").upper()
 
-    if play_again == "N":
+    if play_again == "N" or play_again == "NO":
         in_game = False
